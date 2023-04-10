@@ -1,3 +1,10 @@
 #project 6 : ignore list.json
 list.json
+
+#project 7 : ignore data folder
 data
+
+#project 8 : ignore creat folder
+Employes
+Exercices
+Films
