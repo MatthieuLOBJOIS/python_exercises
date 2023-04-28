@@ -14,3 +14,7 @@ prenoms_clean.txt
 
 #project bonus 1 : ignore data folder
 data
+__pycache__/
+
+#project 10 : ignore env folder
+env
