@@ -1,20 +1,30 @@
-#project 6 : ignore list.json
+#all folder pycache ignored
+__pycache__/
+
+#project 6 :
+#list.json
 list.json
 
-#project 7 : ignore data folder
+#project 7 :
+#data folder
 data
 
-#project 8 : ignore creat folder
+#project 8 :
+#creat folder
 Employes
 Exercices
 Films
 
-#project 9 : ignore prenoms_clean.txt
+#project 9 :
+#prenoms_clean.txt
 prenoms_clean.txt
 
-#project bonus 1 : ignore data folder
-data
-__pycache__/
-
-#project 10 : ignore env folder
+#project 10 :
+#env folder
 env
+#user.log file
+user.log
+
+#project bonus 1 :
+#data folder
+data
