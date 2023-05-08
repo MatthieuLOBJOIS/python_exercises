@@ -1,5 +1,6 @@
 #all folder pycache ignored
 __pycache__/
+.vscode/
 
 #project 6 :
 #list.json
