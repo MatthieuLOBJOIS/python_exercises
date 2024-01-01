@@ -22,6 +22,11 @@ class Liste(list):
             self.remove(element)
             return True
         return False
+    
+    def afficher(self):
+        print(f"Ma liste de {self.nom} :")
+        for element in self:
+            print(f" - {element}") 
 
 if __name__ == "__main__":
     liste = Liste("courses")
@@ -29,4 +34,4 @@ if __name__ == "__main__":
     liste.ajouter("Oranges")
     liste.ajouter("Fraises")
     liste.enlever("Fraises")
-    print(liste)
+    liste.afficher()
