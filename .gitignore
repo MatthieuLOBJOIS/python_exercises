@@ -1,4 +1,4 @@
-#all folder pycache ignored
+#all folder pycache and .vscode ignored
 __pycache__/
 .vscode/
 
@@ -6,7 +6,7 @@ __pycache__/
 #list.json
 list.json
 
-#project 7 :
+#project 7 and p_bonus_2:
 #data folder
 data
 
