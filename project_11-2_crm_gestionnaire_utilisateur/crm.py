@@ -18,6 +18,10 @@ class User:
     def full_name(self):
         return f"{self.first_name} {self.last_name}"
     
+    def _checks(self):
+        self._check_phone_number()
+        self._check_names()
+
     def _check_phone_number(self):
         phone_number = re.sub(r"[+()\s]*", "", self.phone_number)
         if len(phone_number) < 10 or not phone_number.isdigit():
@@ -35,8 +39,10 @@ class User:
 if __name__ == "__main__":
     from faker import Faker
     fake = Faker(locale="fr_FR")
-    user = User(first_name=fake.first_name(),
-                last_name=fake.last_name(),
-                phone_number=fake.phone_number(),
-                address=fake.address(),)
-    user._check_names()
+    for _ in range(10):
+        user = User(first_name=fake.first_name(),
+                    last_name=fake.last_name(),
+                    phone_number=fake.phone_number(),
+                    address=fake.address(),)
+    user._checks()
+    print("-" * 10)
