@@ -1,3 +1,5 @@
+import re
+
 class User:
     def __init__(self, first_name: str, last_name: str, phone_number: str="", address: str=""):
         self.first_name = first_name
@@ -14,14 +16,17 @@ class User:
     @property
     def full_name(self):
         return f"{self.first_name} {self.last_name}"
-
+    
+    def _check_phone_number(self):
+        phone_number = re.sub(r"[+()\s]*", "", self.phone_number)
+        if len(phone_number) < 10 or not phone_number.isdigit():
+            raise ValueError(f"Numéro de téléphone {self.phone_number} invalide.")
+ 
 if __name__ == "__main__":
     from faker import Faker
     fake = Faker(locale="fr_FR")
-    for _ in range(10):
-        user = User(first_name=fake.first_name(),
-                    last_name=fake.last_name(),
-                    phone_number=fake.phone_number(),
-                    address=fake.address(),)
-        print(user)
-        print("-"*10)
+    user = User(first_name=fake.first_name(),
+                last_name=fake.last_name(),
+                phone_number="13",
+                address=fake.address(),)
+    user._check_phone_number()
