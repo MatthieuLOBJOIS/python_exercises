@@ -1,7 +1,12 @@
 import re
 import string
+from tinydb import TinyDB
+from pathlib import Path
 
 class User:
+
+    DB = TinyDB(Path(__file__).resolve().parent / "db.json", indent=4)
+
     def __init__(self, first_name: str, last_name: str, phone_number: str="", address: str=""):
         self.first_name = first_name
         self.last_name = last_name
@@ -35,14 +40,27 @@ class User:
         for character in self.first_name + self.last_name:
             if character in special_characters:
                 raise ValueError(f"Nom invalide {f"Nom invalide {self.full_name}."}")
+    
+    def save(self, validate_data=False):
+        if validate_data:
+            self._checks()
+        return User.DB.insert(self.__dict__)
+    
+def get_all_users():
+    # for user in User.DB.all():
+    #     each_user = User(**user)
+    return [User(**user) for user in User.DB.all()]
+       
 
 if __name__ == "__main__":
-    from faker import Faker
-    fake = Faker(locale="fr_FR")
-    for _ in range(10):
-        user = User(first_name=fake.first_name(),
-                    last_name=fake.last_name(),
-                    phone_number=fake.phone_number(),
-                    address=fake.address(),)
-    user._checks()
-    print("-" * 10)
+    print(get_all_users())
+    
+    # from faker import Faker
+    # fake = Faker(locale="fr_FR")
+    # for _ in range(10):
+    #     user = User(first_name=fake.first_name(),
+    #                 last_name=fake.last_name(),
+    #                 phone_number=fake.phone_number(),
+    #                 address=fake.address(),)
+    #     print(user.save())
+    #     print("-" * 10)
