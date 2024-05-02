@@ -1,6 +1,6 @@
 import re
 import string
-from tinydb import TinyDB
+from tinydb import TinyDB, where
 from pathlib import Path
 
 class User:
@@ -22,6 +22,10 @@ class User:
     @property
     def full_name(self):
         return f"{self.first_name} {self.last_name}"
+    
+    @property
+    def db_instance(self):
+        return User.DB.get((where("first_name") == self.first_name) & (where("last_name") == self.last_name)  )
     
     def _checks(self):
         self._check_phone_number()
@@ -53,8 +57,8 @@ def get_all_users():
        
 
 if __name__ == "__main__":
-    print(get_all_users())
-    
+    martin = User("Martin", "Carpentier")
+    print(martin.db_instance)
     # from faker import Faker
     # fake = Faker(locale="fr_FR")
     # for _ in range(10):
