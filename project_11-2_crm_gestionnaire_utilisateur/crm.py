@@ -45,6 +45,14 @@ class User:
             if character in special_characters:
                 raise ValueError(f"Nom invalide {f"Nom invalide {self.full_name}."}")
     
+    def exists(self):
+        return bool(self.db_instance)
+
+    def delete(self) -> list[int]:
+        if self.exists():
+            return User.DB.remove(doc_ids=[self.db_instance.doc_id])
+        return []
+
     def save(self, validate_data=False):
         if validate_data:
             self._checks()
@@ -58,7 +66,7 @@ def get_all_users():
 
 if __name__ == "__main__":
     martin = User("Martin", "Carpentier")
-    print(martin.db_instance)
+    print(martin.delete())
     # from faker import Faker
     # fake = Faker(locale="fr_FR")
     # for _ in range(10):
