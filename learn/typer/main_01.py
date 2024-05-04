@@ -1,6 +1,6 @@
 import typer
 
-def main(extension: str):
+def main(extension: str = typer.Argument(..., help="Extension à chercher")):
     """
     Affiche les fichiers trouvés avec l'extension données.
     """
