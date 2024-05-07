@@ -2,14 +2,4 @@
 
 [Udemy cours Python](https://www.udemy.com/course/formation-complete-python/)
 
-graph TD;
-    Python --> Typer;
-    Python --> Django;
-    Python --> TinyDB;
-    Python --> Pathlib;
-    Python --> Flask;
-    Python --> Pytest;
-    Python --> WebScraping;
-    Python --> Faker;
-    Python --> Docstring;
-    Python --> Request;
+[<img src="https://skillicons.dev/icons?i=python" alt="Python" width="200">](https://skillicons.dev)
