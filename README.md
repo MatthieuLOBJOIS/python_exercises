@@ -2,7 +2,6 @@
 
 [Udemy cours Python](https://www.udemy.com/course/formation-complete-python/)
 
-```mermaid
 graph TD;
     Python --> Typer;
     Python --> Django;
