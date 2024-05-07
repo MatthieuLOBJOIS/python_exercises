@@ -43,10 +43,14 @@ class App(QtWidgets.QWidget):
     def compute(self):
         montant = self.spn_montant.value()
         devise_from = self.cbb_devisesFrom.currentText()
-        devise_To = self.cbb_devisesTo.currentText()
-        resultat = self.c.convert(montant, devise_from, devise_To)
-        self.spn_montantConverti.setValue(resultat)
-        print(resultat)
+        devise_to = self.cbb_devisesTo.currentText()
+
+        try:
+            resultat = self.c.convert(montant, devise_from, devise_to)
+        except currency_converter.currency_converter.RateNotFoundError:
+            print("La conversion n'a pas fonctionné.")
+        else:
+            self.spn_montantConverti.setValue(resultat)
 
     def inverser_devise(self): 
         devise_from = self.cbb_devisesFrom.currentText()
