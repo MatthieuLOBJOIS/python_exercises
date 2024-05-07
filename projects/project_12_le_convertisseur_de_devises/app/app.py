@@ -7,7 +7,9 @@ class App(QtWidgets.QWidget):
         self.setWindowTitle("Convertisseur de devises")
         self.setup_ui()
         self.set_default_values()
-        self.setup_connections()   
+        self.setup_connections()
+        self.setup_css()
+        self.resize(500, 100) 
 
     def setup_ui(self):
         self.layout = QtWidgets.QHBoxLayout(self)
@@ -22,6 +24,13 @@ class App(QtWidgets.QWidget):
         self.layout.addWidget(self.cbb_devisesTo)
         self.layout.addWidget(self.spn_montantConverti)
         self.layout.addWidget(self.btn_inverser)
+
+    def setup_css(self):
+        self.setStyleSheet("""
+        background-color: rgb(30, 30, 30);
+        color: rgb(240, 240, 240);
+        border: none;
+        """)
 
     def set_default_values(self):
         self.cbb_devisesFrom.addItems(sorted(list(self.c.currencies)))
