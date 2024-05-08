@@ -1,24 +1,30 @@
+import os
+import json
+
+CUR_DIR = os.path.dirname(__file__)
+DATA_File = os.path.join(CUR_DIR, "data", "movies.json")
 class Movie():
-    def __init__(self, movie_name = str):
-        #self.set_movie_name(movie_name)
-        self.title = movie_name.title()
+    def __init__(self, title = str):
+        self.title = title.title
 
     def __str__(self):
-        return self.title
+        return self.title()
     
-    # def set_movie_name(self, movie_name = str) -> str:
-    #     """_summary_
+    def _get_movies(self):
+        with open(DATA_File, "r") as file:
+         return json.load(file)
 
-    #     Args:
-    #         movie_name (str)
-
-    #     Returns:
-    #         str: returns the name of the film with the first character of each word capitalized
-    #     """
-    #     word_list_upper_first_character = [word.replace(word[0], word[0].upper()) for word in movie_name.split(" ")]
-    #     movie_name_modified = " ".join(word_list_upper_first_character)
-    #     print(movie_name_modified)
+    def _write_movies(self, movies):
+       with open(DATA_File, "w") as file:
+         json.dump(movies, file, indent=4)
 
 if __name__ == "__main__":
     m = Movie("harry potter")
     print(m)
+    m._write_movies([
+    "le seigneur des anneaux",
+    "harry potter",
+    "transformers",
+    "jurassic park 2"])
+    print(m._get_movies())
+ 
