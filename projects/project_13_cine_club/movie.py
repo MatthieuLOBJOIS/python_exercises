@@ -21,18 +21,28 @@ class Movie():
             json.dump(movies, file, indent=4)
 
     def add_to_movies(self) -> bool:
-       list_movies = self._get_movies()
-       if self.title not in list_movies:
-           list_movies.append(self.title)
-           self._write_movies(list_movies)
-           return True
-       else:
+        list_movies = self._get_movies()
+        if self.title not in list_movies:
+            list_movies.append(self.title)
+            self._write_movies(list_movies)
+            return True
+        else:
             logging.warning(f"Le film {self.title} est déjà dans la liste.")
             return False
-          
+
+    def remove_from_movies(self) -> bool:
+        list_movies = self._get_movies()
+        if self.title in list_movies:
+           list_movies.remove(self.title)
+           self._write_movies(list_movies)
+           return True
+        else:
+            logging.warning(f"Le film {self.title} n'est pas dans la liste.")
+            return False
 
 if __name__ == "__main__":
     m = Movie("harry potter")
-    m.add_to_movies()
- 
- 
+    #m.add_to_movies()
+    m.remove_from_movies()
+
+
