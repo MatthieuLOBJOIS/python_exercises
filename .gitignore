@@ -6,7 +6,7 @@ __pycache__/
 
 # Dependency directories
 # venv
-# p_10 : 
+# p_10 && p_13 && learn/test_unitaire : 
 env
 
 # p_12
@@ -18,7 +18,7 @@ env12
 # list.json
 list.json
 
-# p_7 && p_bonus_2 && p_bonus_1 :
+# p_7 && p_13 p_bonus_2 && p_bonus_1 :
 # data folder
 data
 
@@ -34,3 +34,7 @@ prenoms_clean.txt
 # p_10
 # user.log file
 user.log
+
+# learn/test_unitaire : 
+htmlcov
+.coverage

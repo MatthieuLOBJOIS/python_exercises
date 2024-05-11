@@ -1,6 +1,6 @@
 from unittest import TestCase
 
-from main import add
+from main import add, divide
 
 class TestCalculatrice(TestCase):
     def test_add_two_numbers(self):
@@ -18,3 +18,5 @@ class TestCalculatrice(TestCase):
         with self.assertRaises(TypeError):
             add(None, None)
 
+    def test_divide_with_two_numbers(self):
+        self.assertEqual(divide(10, 5), 2)
