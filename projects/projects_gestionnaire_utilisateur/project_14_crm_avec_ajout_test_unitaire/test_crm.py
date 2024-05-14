@@ -1,6 +1,6 @@
 from crm import User
 import pytest
-from tinydb import TinyDB
+from tinydb import TinyDB, table
 from tinydb.storages import MemoryStorage
 
 @pytest.fixture
@@ -37,9 +37,21 @@ def test_not_exists():
              phone_number="0723456789")
     assert u.exists() is False
 
-def test_db_instance():
-    assert False
+def test_db_instance(user):
+    # On vérifie si un utilisateur est ajouté en base de donnée que ces données son correct
+    assert isinstance(user.db_instance, table.Document)
+    assert user.db_instance["first_name"] == "Patrick"
+    assert user.db_instance["last_name"] == "Martin"
+    assert user.db_instance["address"] == "1 rue du chemin, 75000 Paris"
+    assert user.db_instance["phone_number"] == "0123456789"
 
+def test_not_db_instance():
+    u = User(first_name="Matthieu",
+             last_name="Aston",
+             address="13 rue du chemin, 75000 Paris",
+             phone_number="0723456789")
+    assert u.db_instance is None
+    
 def test_check_phone_number():
     assert False
 
