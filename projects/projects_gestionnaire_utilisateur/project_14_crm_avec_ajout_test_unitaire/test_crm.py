@@ -94,7 +94,35 @@ def test_check_names_invalid_characters():
     assert "Nom invalide" in str(err.value)
     
 def test_delete():
-    assert False
+    user_test = User(first_name="Jhon",
+    last_name="Smith",
+    address="1 rue du chemin, 75015, Paris",
+    phone_number="0123456789")
+
+    user_test.save()
+    first =  user_test.delete()
+    second =  user_test.delete()
+    assert len(first) > 0
+    assert isinstance(first, list)
+   
+    assert len(second) == 0
+    assert isinstance(second, list)
 
 def test_save():
-    assert False
+    user_test = User(first_name="Jhon",
+        last_name="Smith",
+        address="1 rue du chemin, 75015, Paris",
+        phone_number="0123456789")
+
+    user_test_dup = User(first_name="Jhon",
+    last_name="Smith",
+    address="1 rue du chemin, 75015, Paris",
+    phone_number="0123456789")
+
+    first = user_test.save()
+    second = user_test_dup.save()
+    assert isinstance(first, int)
+    assert isinstance(second, int)
+    assert first > 0
+    assert second == -1
+    
