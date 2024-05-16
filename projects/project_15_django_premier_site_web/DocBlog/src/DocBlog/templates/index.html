@@ -6,6 +6,7 @@
     <title>Mon site web</title>
 </head>
 <body>
-    <h1>Bonjour, bienvenue sur mon site !</h1>
+    <h1>Bonjour {{ prenom|upper }}, bienvenue sur mon site !</h1>
+    <h2>Aujourd'hui nous sommes le {{ date|date:"l d F Y H:i:s" }}<h2/>
 </body>
 </html>
