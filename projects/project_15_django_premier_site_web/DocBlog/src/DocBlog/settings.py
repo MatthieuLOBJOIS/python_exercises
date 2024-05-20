@@ -55,7 +55,7 @@ ROOT_URLCONF = 'DocBlog.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [f"{BASE_DIR}/DocBlog/templates"],
+        'DIRS': [f"{BASE_DIR}/DocBlog/templates/"],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
